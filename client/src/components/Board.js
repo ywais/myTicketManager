@@ -2,7 +2,7 @@ import React from 'react';
 import Ticket from './Ticket';
 
 function Board(props) {
-    const addTicket = tickets => tickets.map(ticket =>
+    const addTicket = tickets => tickets.map((ticket, index) =>
             <Ticket
             key = {ticket.id}
             id = {ticket.id}
@@ -11,6 +11,8 @@ function Board(props) {
             userEmail = {ticket.userEmail}
             creationTime = {ticket.creationTime}
             labels = {ticket.labels}
+            style = {ticket.style}
+            onClick = {() => props.onClick(index)}
             />
     );
 

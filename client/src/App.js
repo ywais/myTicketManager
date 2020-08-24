@@ -17,11 +17,18 @@ function App() {
         getFilteredTickets();
     }, [filtering]);
 
+    //hide button clicked
+    const handleClick = (index) => {
+        const ticketsCopy = tickets.slice();
+        ticketsCopy[index].style = {display: 'none'};
+        setTickets(ticketsCopy);
+    }
+
     // app structure
     return (
         <main>
             <input id='searchInput' onChange={event => setFiltering(event.target.value)}></input>
-            <Board tickets={tickets}/>
+            <Board tickets={tickets} onClick={index => handleClick(index)}/>
         </main>
     );
 }
