@@ -12,7 +12,13 @@ app.use(express.json());
 app.get('/api/tickets', async (req, res) => {
     let tickets = await fs.readFile(filePath);
     let ticketsUnJSONed = JSON.parse(tickets);
-    res.send(ticketsUnJSONed);
+    if(req.query.searchText){
+        const filteredTickets = ticketsUnJSONed.filter(ticket => ticket.title.toLowerCase().includes(req.query.searchText.toLowerCase()) ? ticket : '');
+        res.send(filteredTickets);
+        // res.send(req.query.searchText);
+    } else {
+        res.send(ticketsUnJSONed);
+    }
 });
 
 module.exports = app;
