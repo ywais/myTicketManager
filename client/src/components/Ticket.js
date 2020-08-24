@@ -1,7 +1,13 @@
 import React from 'react';
 
 function Ticket(props) {
-    const printLabels = labels => labels.forEach(label => <span className='label'>{label}</span>);
+    const printLabels = labels => {
+        if(labels) {
+            return labels.map(label => <span className='label'>{label}</span>);
+        } else {
+            return '';
+        }
+    }
 
     return (
         <div className='ticket' id={props.id}>
@@ -14,6 +20,7 @@ function Ticket(props) {
                 </div>
                 <div className='ticketLabels'>{printLabels(props.labels)}</div>
             </div>
+            <br />
         </div>
     );
 }

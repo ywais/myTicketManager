@@ -2,9 +2,9 @@ import React from 'react';
 import Ticket from './Ticket';
 
 function Board(props) {
-
-    const addTicket = tickets => tickets.forEach(ticket =>
+    const addTicket = tickets => tickets.map(ticket =>
             <Ticket
+            key = {ticket.id}
             id = {ticket.id}
             title = {ticket.title}
             content = {ticket.content}
