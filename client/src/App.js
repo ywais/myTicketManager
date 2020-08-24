@@ -6,19 +6,21 @@ import './App.css';
 function App() {
     //states
     const [tickets, setTickets] = useState([]);
+    const [filtering, setFiltering] = useState('');
 
-    //get tickets data
+    //filter tickets data
     useEffect(() => {
-        const getTickets = async () => {
-            const { data } = await axios.get('/api/tickets');
+        const getFilteredTickets = async () => {
+            const { data } = await axios.get(`/api/tickets?searchText=${filtering}`);
             setTickets(data);
         };
-        getTickets();
-    }, []);
+        getFilteredTickets();
+    }, [filtering]);
 
     // app structure
     return (
         <main>
+            <input id='searchInput' onChange={event => setFiltering(event.target.value)}></input>
             <Board tickets={tickets}/>
         </main>
     );

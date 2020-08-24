@@ -3,7 +3,7 @@ import React from 'react';
 function Ticket(props) {
     const printLabels = labels => {
         if(labels) {
-            return labels.map(label => <span className='label'>{label}</span>);
+            return labels.map((label, index) => <span key={index} className='label'>{label}</span>);
         } else {
             return '';
         }
