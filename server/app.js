@@ -21,4 +21,36 @@ app.get('/api/tickets', async (req, res) => {
     }
 });
 
+app.post('/api/tickets/:ticketId/done', async (req, res) => {
+    let tickets = await fs.readFile(filePath);
+    let ticketsUnJSONed = JSON.parse(tickets);
+    let index;
+    ticketsUnJSONed.forEach((ticket, i) => {
+        if(ticket.id === req.params.ticketId) {
+            ticket.done = true;
+            ticket.updated = true;
+            index = i;
+        }
+    });
+    let ticketsReJSONed = JSON.stringify(ticketsUnJSONed);
+    await fs.writeFile(filePath, ticketsReJSONed);
+    res.send(ticketsUnJSONed[index]);
+});
+
+app.post('/api/tickets/:ticketId/undone', async (req, res) => {
+    let tickets = await fs.readFile(filePath);
+    let ticketsUnJSONed = JSON.parse(tickets);
+    let index;
+    ticketsUnJSONed.forEach((ticket, i) => {
+        if(ticket.id === req.params.ticketId) {
+            ticket.done = false;
+            ticket.updated = true;
+            index = i;
+        }
+    });
+    let ticketsReJSONed = JSON.stringify(ticketsUnJSONed);
+    await fs.writeFile(filePath, ticketsReJSONed);
+    res.send(ticketsUnJSONed[index]);
+});
+
 module.exports = app;
