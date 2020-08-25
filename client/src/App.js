@@ -6,6 +6,7 @@ import './App.css';
 function App() {
     //states
     const [tickets, setTickets] = useState([]);
+    const [originalTickets, setOriginalTickets] = useState([]);
     const [filtering, setFiltering] = useState('');
 
     //filter tickets data
@@ -18,9 +19,12 @@ function App() {
     }, [filtering]);
 
     //hide button clicked
-    const handleClick = (index) => {
+    const handleHideClick = (index) => {
         const ticketsCopy = tickets.slice();
-        ticketsCopy[index].style = {display: 'none'};
+        ticketsCopy.splice(index, 1);
+        if(originalTickets.length === 0) {
+            setOriginalTickets(tickets);
+        }
         setTickets(ticketsCopy);
     }
 
@@ -28,7 +32,7 @@ function App() {
     return (
         <main>
             <input id='searchInput' onChange={event => setFiltering(event.target.value)}></input>
-            <Board tickets={tickets} onClick={index => handleClick(index)}/>
+            <Board tickets={tickets} onClick={index => handleHideClick(index)}/>
         </main>
     );
 }
