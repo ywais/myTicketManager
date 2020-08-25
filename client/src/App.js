@@ -28,9 +28,18 @@ function App() {
         setTickets(ticketsCopy);
     }
 
+    //restore button clicked
+    const handleRestoreClick = () => {
+        if(originalTickets.length > 0) {
+            setTickets(originalTickets);
+            setOriginalTickets([]);
+        }
+    }
+
     // app structure
     return (
         <main>
+            <button id="restoreHideTickets" onClick={handleRestoreClick}>restore</button>
             <input id='searchInput' onChange={event => setFiltering(event.target.value)}></input>
             <Board tickets={tickets} onClick={index => handleHideClick(index)}/>
         </main>
