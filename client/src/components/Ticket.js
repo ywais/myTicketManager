@@ -10,7 +10,7 @@ function Ticket(props) {
     }
 
     return (
-        <div className='ticket' id={props.id} style={props.style}>
+        <div className={props.className ? props.className : 'ticket'} id={props.id} style={props.style}>
             <button className="hideTicketButton" onClick={props.onClick}>hide</button>
             <div className='ticketTitle'>{props.title}</div>
             <div className='ticketContent'>{props.content}</div>
