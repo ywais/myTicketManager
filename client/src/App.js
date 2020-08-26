@@ -34,11 +34,11 @@ function App() {
         ticketsCopy.map(ticket => {
             if(ticket.id === id) {
                 ticket.className = 'hiddenTicket';
-                ticket.style = {display: 'none'}; // TODO: move to css class        
+                ticket.style = {display: 'none'}; // TODO: move to css class
             }
         });
         setTicketsWithHidden(ticketsCopy);
-        setHiddenCounter(hiddenCounter + 1);        
+        setHiddenCounter(hiddenCounter + 1);
     }
 
     //restore button clicked

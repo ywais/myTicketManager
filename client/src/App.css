@@ -12,6 +12,43 @@
     font-family: Montserrat;
 }
 
+html {
+    font-size: 62.5%;
+    scroll-behavior: smooth;
+}
+
+/* media queries for responsiveness */
+@media (max-width: 75em) {
+    html { font-size: 60%; } }
+
+@media (max-width: 61.25em) {
+    html { font-size: 58%; } }
+
+@media (max-width: 28.75em) {
+    html { font-size: 55%; } }
+
+/* base styling */
+body {
+    font-size: 1.8rem;
+    font-weight: 400;
+    line-height: 1.4;
+}
+
+h1, h2, h3, h4 { font-weight: 700; }
+
+h1 { font-size: 4rem; }
+
+h2 { font-size: 3.6rem; }
+
+h3 { font-size: 2.7rem; }
+
+h4 { font-size: 2.2rem; }
+
+img {
+    display: block;
+    width: 100%;
+}  
+
 /* single ticket */
 .ticket {
     margin: 1em;
