@@ -31,15 +31,20 @@ function Ticket(props) {
     
     return (
         <div className={props.className ? props.className : 'ticket'} id={props.id}>
-            <button className="hideTicketButton" onClick={props.onClick}>hide</button>
-            <h4 className='ticketTitle'>{props.title}</h4>
-            <p className='ticketContent'>{props.content}</p>
-            <div className='ticketInfo'>
-                <div className='ticketUserInfo'>
-                    <span className='ticketUserEmail'>{props.userEmail}</span>
-                    <span className='ticketCreationTime'>{displayDate(props.creationTime)}</span>
+            <div className='buttons'>
+                <button className='doneTicketButton' onClick={props.onDoneClick}>done / undone</button>
+                <button className='hideTicketButton' onClick={props.onHideClick}>hide</button>
+            </div>
+            <div className='ticketText' style={props.done ? {textDecoration:'line-through'} : {}}>
+                <h4 className='ticketTitle'>{props.title}</h4>
+                <p className='ticketContent'>{props.content}</p>
+                <div className='ticketInfo'>
+                    <div className='ticketUserInfo'>
+                        <span className='ticketUserEmail'>{props.userEmail}</span>
+                        <span className='ticketCreationTime'>{displayDate(props.creationTime)}</span>
+                    </div>
+                    <div className='ticketLabels'>{printLabels(props.labels)}</div>
                 </div>
-                <div className='ticketLabels'>{printLabels(props.labels)}</div>
             </div>
             <br />
         </div>

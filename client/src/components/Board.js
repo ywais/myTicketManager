@@ -12,7 +12,9 @@ function Board(props) {
             userEmail = {ticket.userEmail}
             creationTime = {ticket.creationTime}
             labels = {ticket.labels}
-            onClick = {() => props.onClick(ticket.id)}
+            done = {ticket.done}
+            onDoneClick = {() => props.onDoneClick(ticket.id)}
+            onHideClick = {() => props.onHideClick(ticket.id)}
             />
     );
 

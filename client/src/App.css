@@ -59,20 +59,27 @@ img {
     padding-right: 1em;
 }
 
-.ticket .hideTicketButton {
+.ticket .buttons {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.ticket button {
     visibility: hidden;
-    width: 4em;
     border: none;
     text-decoration: none;
     background-color: var(--main-background-blue);
-    margin-left: auto;
-    padding-top: 0.5em;
+    padding: 0.5em 0 0 1em;
     font-weight: bold;
 }
 
-.ticket:hover .hideTicketButton {
+.ticket:hover button {
     visibility: visible;
     outline:none;
+}
+
+.ticket:hover button:hover {
+    text-decoration: underline;
 }
 
 .ticket .ticketContent {

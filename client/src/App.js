@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import axios from "axios";
+import axios from 'axios';
 import Board from './components/Board';
 import './App.css';
 
@@ -28,6 +28,17 @@ function App() {
         getFilteredTickets();
     }, [filtering, ticketsWithHidden]);
 
+    //done button clicked
+    const handleDoneClick = (id) => {
+        let ticketsCopy = ticketsWithHidden.slice();
+        ticketsCopy.map(async ticket => {
+            if(ticket.id === id) {
+                await axios.post(`/api/tickets/${id}/${ticket.done === true ? 'un' : ''}done`);
+            }
+        });
+        setTicketsWithHidden(ticketsCopy);
+    }
+
     //hide button clicked
     const handleHideClick = (id) => {
         let ticketsCopy = ticketsWithHidden.slice();
@@ -42,14 +53,12 @@ function App() {
 
     //restore button clicked
     const handleRestoreClick = () => {
-        if(ticketsWithHidden.length > 0) {
-            ticketsWithHidden.forEach(ticket => ticket.className = 'ticket')
-            setHiddenCounter(0);
-            setFiltering('');
-            setTicketsWithHidden([]);
-            document.querySelector('#searchInput').value = '';
+        ticketsWithHidden.forEach(ticket => ticket.className = 'ticket')
+        setHiddenCounter(0);
+        setFiltering('');
+        setTicketsWithHidden([]);
+        document.querySelector('#searchInput').value = '';
         }
-    }
 
     // app structure
     return (
@@ -62,9 +71,9 @@ function App() {
                 <span id='hideTicketsText'>
                     {hiddenCounter > 0 ? ` hidden ticket${hiddenCounter > 1 ? 's ' : ' '}` : ''}
                 </span>
-                <button id="restoreHideTickets" onClick={handleRestoreClick}>restore</button>
+                <button id='restoreHideTickets' onClick={handleRestoreClick}>Restore Hidden Tickets</button>
             </div>
-            <Board tickets={tickets} onClick={id => handleHideClick(id)}/>
+            <Board tickets={tickets} onDoneClick={id => handleDoneClick(id)} onHideClick={id => handleHideClick(id)}/>
         </main>
     );
 }
