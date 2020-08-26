@@ -1,0 +1,7 @@
+.ticket .hideTicketButton{
+    visibility: hidden;
+}
+
+.ticket:hover .hideTicketButton{
+    visibility: visible;
+}
