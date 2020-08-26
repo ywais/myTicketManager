@@ -12,7 +12,6 @@ function Board(props) {
             userEmail = {ticket.userEmail}
             creationTime = {ticket.creationTime}
             labels = {ticket.labels}
-            style = {ticket.style}
             onClick = {() => props.onClick(ticket.id)}
             />
     );

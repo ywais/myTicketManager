@@ -107,3 +107,7 @@ img {
     border-right-style: solid;
     border-right-width: thin;
 }
+
+.hiddenTicket {
+    display: none;
+}
