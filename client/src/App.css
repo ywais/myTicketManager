@@ -35,6 +35,7 @@
 
 .ticket:hover .hideTicketButton {
     visibility: visible;
+    outline:none;
 }
 
 .ticket .ticketContent {

@@ -17,6 +17,7 @@ function App() {
             if(filtering === '') {
                 if(ticketsWithHidden.length === 0) { // show all tickets from data
                     setTickets(data);
+                    setTicketsWithHidden(data);
                 } else { // show only non-hidden
                     setTickets(ticketsWithHidden);
                 }
@@ -28,10 +29,14 @@ function App() {
     }, [filtering, ticketsWithHidden]);
 
     //hide button clicked
-    const handleHideClick = (index) => {
-        const ticketsCopy = ticketsWithHidden.length === 0 ? tickets.slice() : ticketsWithHidden.slice();
-        ticketsCopy[index].className = 'hiddenTicket';
-        ticketsCopy[index].style = {display: 'none'}; // TODO: move to css class
+    const handleHideClick = (id) => {
+        let ticketsCopy = ticketsWithHidden.slice();
+        ticketsCopy.map(ticket => {
+            if(ticket.id === id) {
+                ticket.className = 'hiddenTicket';
+                ticket.style = {display: 'none'}; // TODO: move to css class        
+            }
+        });
         setTicketsWithHidden(ticketsCopy);
         setHiddenCounter(hiddenCounter + 1);        
     }
@@ -60,7 +65,7 @@ function App() {
                 </span>
                 <button id="restoreHideTickets" onClick={handleRestoreClick}>restore</button>
             </div>
-            <Board tickets={tickets} onClick={index => handleHideClick(index)}/>
+            <Board tickets={tickets} onClick={id => handleHideClick(id)}/>
         </main>
     );
 }
