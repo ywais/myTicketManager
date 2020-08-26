@@ -5,45 +5,37 @@ import './App.css';
 
 function App() {
     //states
-    const [tickets, setTickets] = useState([]); // tickets array to display
-    const [ticketsWithHidden, setTicketsWithHidden] = useState([]); // tickets array with hidden tickets
+    const [tickets, setTickets] = useState([]);
+    const [originalTickets, setOriginalTickets] = useState([]);
     const [filtering, setFiltering] = useState('');
     const [hiddenCounter, setHiddenCounter] = useState(0);
 
-    //get all and filter tickets data
+    //filter tickets data
     useEffect(() => {
         const getFilteredTickets = async () => {
             const { data } = await axios.get(`/api/tickets?searchText=${filtering}`);
-            if(filtering === '') {
-                if(ticketsWithHidden.length === 0) { // show all tickets from data
-                    setTickets(data);
-                } else { // show only non-hidden
-                    setTickets(ticketsWithHidden);
-                }
-            } else {
-                setTickets(data);
-            }
+            setTickets(data);
         };
         getFilteredTickets();
-    }, [filtering, ticketsWithHidden]);
+    }, [filtering]);
 
     //hide button clicked
     const handleHideClick = (index) => {
-        const ticketsCopy = ticketsWithHidden.length === 0 ? tickets.slice() : ticketsWithHidden.slice();
-        ticketsCopy[index].className = 'hiddenTicket';
-        ticketsCopy[index].style = {display: 'none'}; // TODO: move to css class
-        setTicketsWithHidden(ticketsCopy);
-        setHiddenCounter(hiddenCounter + 1);        
+        const ticketsCopy = tickets.slice();
+        ticketsCopy.splice(index, 1);
+        setHiddenCounter(hiddenCounter + 1);
+        if(originalTickets.length === 0) {
+            setOriginalTickets(tickets);
+        }
+        setTickets(ticketsCopy);
     }
 
     //restore button clicked
     const handleRestoreClick = () => {
-        if(ticketsWithHidden.length > 0) {
-            ticketsWithHidden.forEach(ticket => ticket.className = 'ticket')
+        if(originalTickets.length > 0) {
             setHiddenCounter(0);
-            setFiltering('');
-            setTicketsWithHidden([]);
-            document.querySelector('#searchInput').value = '';
+            setTickets(originalTickets);
+            setOriginalTickets([]);
         }
     }
 
@@ -56,7 +48,7 @@ function App() {
                     {hiddenCounter > 0 ? hiddenCounter : ''}
                 </span>
                 <span id='hideTicketsText'>
-                    {hiddenCounter > 0 ? ` hidden ticket${hiddenCounter > 1 ? 's ' : ' '}` : ''}
+                    {hiddenCounter > 0 ? ` hidden ticket${hiddenCounter > 1 ? 's' : ''}` : ''}
                 </span>
                 <button id="restoreHideTickets" onClick={handleRestoreClick}>restore</button>
             </div>

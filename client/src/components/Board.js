@@ -5,7 +5,6 @@ function Board(props) {
     const addTicket = tickets => tickets.map((ticket, index) =>
             <Ticket
             key = {ticket.id}
-            className = {ticket.className}
             id = {ticket.id}
             title = {ticket.title}
             content = {ticket.content}
