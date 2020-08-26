@@ -1,7 +1,71 @@
-.ticket .hideTicketButton{
-    visibility: hidden;
+:root {
+    --main-background-blue: #e6ffff;
+    --main-light-blue: #b3ecff;
+    --main-red: #ff3300;
+    --main-orange: #ff8c1a;
+    --main-yellow: #ffff00;
 }
 
-.ticket:hover .hideTicketButton{
+* {
+    margin: 0;
+    padding: 0;
+    font-family: Montserrat;
+}
+
+/* single ticket */
+.ticket {
+    margin: 1em;
+    background-color: var(--main-background-blue);
+    display: flex;
+    flex-direction: column;
+    padding-left: 1em;
+    padding-right: 1em;
+}
+
+.ticket .hideTicketButton {
+    visibility: hidden;
+    width: 4em;
+    border: none;
+    text-decoration: none;
+    background-color: var(--main-background-blue);
+    margin-left: auto;
+    padding-top: 0.5em;
+    font-weight: bold;
+}
+
+.ticket:hover .hideTicketButton {
     visibility: visible;
+}
+
+.ticket .ticketContent {
+    padding-top: 0.5em;
+}
+
+.ticket .ticketInfo {
+    padding-top: 0.5em;
+    display: flex;
+    justify-content: space-between;
+}
+
+.ticket span {
+    padding: 0 0.25em;
+    font-size: small;
+}
+
+.ticket .label {
+    background-color: var(--main-light-blue);
+    padding: 0.25em 0.5em;
+    margin-left: 0.25em;
+    border-radius: 10%;
+}
+
+.ticket .ticketUserInfo {
+    font-style: italic;
+}
+
+.ticket .ticketUserEmail {
+    padding-right: 0.5em;
+    border-right-color: black;
+    border-right-style: solid;
+    border-right-width: thin;
 }
