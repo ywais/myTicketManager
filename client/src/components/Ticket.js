@@ -54,7 +54,7 @@ function Ticket(props) {
   };
 
   return (
-    <div className={props.className ? props.className : 'ticket'} id={props.id}>
+    <div className={props.className ? props.className : 'ticket'} id={props.id} style={props.style}>
       <div className="buttons">
         <button className="doneTicketButton" onClick={props.onDoneClick}>done / undone</button>
         <button className="hideTicketButton" onClick={props.onHideClick}>hide</button>

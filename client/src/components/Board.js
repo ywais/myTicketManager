@@ -7,6 +7,7 @@ function Board(props) {
       key={ticket.id}
       className={ticket.className}
       id={ticket.id}
+      style={ticket.style}
       title={ticket.title}
       content={ticket.content}
       userEmail={ticket.userEmail}
