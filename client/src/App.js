@@ -14,7 +14,8 @@ function App() {
   useEffect(() => {
     const getFilteredTickets = async () => {
       const { data } = await axios.get(`/api/tickets?searchText=${filtering}`);
-      if (filtering === '' && hiddenIds.length > 0) {
+      const spaces = new RegExp(/^(\s{1,})$/);
+      if ((filtering === '' || filtering.match(spaces).length) > 0 && hiddenIds.length > 0) {
         data.forEach((ticket) => {
           hiddenIds.forEach((hiddenId) => {
             if (ticket.id === hiddenId) {
