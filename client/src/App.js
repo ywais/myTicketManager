@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Board from './components/Board';
+import Filters from './components/Filters';
 import './App.css';
 
 function App() {
@@ -13,16 +14,16 @@ function App() {
   useEffect(() => {
     const getFilteredTickets = async () => {
       const { data } = await axios.get(`/api/tickets?searchText=${filtering}`);
-      if(filtering === '' && hiddenIds.length > 0) {
-        data.forEach(ticket => {
-            hiddenIds.forEach(hiddenId => {
-                if(ticket.id === hiddenId) {
-                    ticket.className = 'hiddenTicket';
-                }
-            });
+      if (filtering === '' && hiddenIds.length > 0) {
+        data.forEach((ticket) => {
+          hiddenIds.forEach((hiddenId) => {
+            if (ticket.id === hiddenId) {
+              ticket.className = 'hiddenTicket';
+            }
+          });
         });
       }
-        setTickets(data);
+      setTickets(data);
     };
     getFilteredTickets();
   }, [filtering]);
@@ -35,57 +36,61 @@ function App() {
         await axios.post(`/api/tickets/${id}/${ticket.done === true ? 'un' : ''}done`);
       }
     });
-    setFiltering(filtering + ' ');
+    setFiltering(`${filtering} `);
   };
 
   // hide button clicked
   const handleHideClick = (id) => {
     const ticketsCopy = tickets.slice();
     let isHidden = false;
-    hiddenIds.forEach(hiddenId => {
-        if(hiddenId === id) {
-            isHidden = true;
-        }
+    hiddenIds.forEach((hiddenId) => {
+      if (hiddenId === id) {
+        isHidden = true;
+      }
     });
-    if(!isHidden) {
-        ticketsCopy.forEach(ticket => {
+    if (!isHidden) {
+      ticketsCopy.forEach((ticket) => {
         if (ticket.id === id) {
-            ticket.className = 'hiddenTicket';
-            setHiddenIds(hiddenIds.concat(id));
+          ticket.className = 'hiddenTicket';
+          setHiddenIds(hiddenIds.concat(id));
         }
-        });
+      });
     }
   };
 
   // restore button clicked
   const handleRestoreClick = () => {
-      tickets.forEach((ticket) => { ticket.className = 'ticket'; });
+    tickets.forEach((ticket) => { ticket.className = 'ticket'; });
     //   setTickets([]);
-      setHiddenIds([]);
+    setHiddenIds([]);
     setFiltering('');
     document.querySelector('#searchInput').value = '';
   };
 
   // app structure
   return (
-    <div className='pageContainer'>
+    <div className="pageContainer">
       <header className="topBar">
-        <h3>Tickets ({tickets.length})</h3>
-        <input id="searchInput" placeholder='Search Title...' onChange={(event) => setFiltering(event.target.value)} />
+        <h3>
+          Tickets (
+          {tickets.length}
+          )
+        </h3>
+        <input id="searchInput" placeholder="Search Title..." onChange={(event) => setFiltering(event.target.value)} />
         <button className="createIicketButton">Create</button>
       </header>
       <main>
-        <div className="hideAndRestore">
-          <span id="hideTicketsCounter">
-          {hiddenIds.length > 0 ? hiddenIds.length : ''}
-          </span>
-          <span id="hideTicketsText">
-          {hiddenIds.length > 0 ? ` hidden ticket${hiddenIds.length > 1 ? 's ' : ' '}` : ''}
-          </span>
-          <button id="restoreHideTickets" onClick={handleRestoreClick}>Restore Hidden Tickets</button>
-        </div>
-        <section className='centerContainer'>
-          <article className='board'>
+        <section className="centerContainer">
+          <article className="board">
+            <div className="hideAndRestore">
+              <button id="restoreHideTickets" onClick={handleRestoreClick}>Restore Hidden Tickets</button>
+              <span id="hideTicketsCounter">
+                {hiddenIds.length > 0 ? hiddenIds.length : ''}
+              </span>
+              <span id="hideTicketsText">
+                {hiddenIds.length > 0 ? ` hidden ticket${hiddenIds.length > 1 ? 's ' : ' '}` : ''}
+              </span>
+            </div>
             <Board
               tickets={tickets}
               onDoneClick={(id) => handleDoneClick(id)}
@@ -93,10 +98,11 @@ function App() {
             />
           </article>
           <aside className="sideBar">
-            <h3>Filters:</h3>
+            {/* <h3>Filters:</h3>
             <div className='priorityFilter'></div>
             <div className='labelFilter'></div>
-            <div className='added'></div>
+            <div className='added'></div> */}
+            <Filters />
           </aside>
         </section>
       </main>

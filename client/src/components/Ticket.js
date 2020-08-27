@@ -10,12 +10,29 @@ function Ticket(props) {
 
   const printPriority = (priority) => {
     if (priority === 1) {
-      return <><span className='priority low'>●</span> Low</>;
-    } else if (priority === 2) {
-      return <><span className='priority medium'>●</span> Medium</>;
-    } else {
-      return <><span className='priority high'>●</span> High</>;
+      return (
+        <>
+          <span className="priority low">●</span>
+          {' '}
+          Low
+        </>
+      );
+    } if (priority === 2) {
+      return (
+        <>
+          <span className="priority medium">●</span>
+          {' '}
+          Medium
+        </>
+      );
     }
+    return (
+      <>
+        <span className="priority high">●</span>
+        {' '}
+        High
+      </>
+    );
   };
 
   const displayDate = (creationTime) => {

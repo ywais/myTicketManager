@@ -18,14 +18,24 @@ html {
 }
 
 /* media queries for responsiveness */
+@media (min-width: 75em) {
+    #searchInput { width: 40%; }
+}
+
 @media (max-width: 75em) {
-    html { font-size: 60%; } }
+    html { font-size: 60%; } 
+    #searchInput { width: 35%; }
+}
 
 @media (max-width: 61.25em) {
-    html { font-size: 58%; } }
+    html { font-size: 58%; } 
+    #searchInput { width: 25%; }
+}
 
-@media (max-width: 28.75em) {
-    html { font-size: 55%; } }
+@media (max-width: 30.75em) {
+    html { font-size: 55%; } 
+    #searchInput { width: 15%; }
+}
 
 /* base styling */
 body {
@@ -57,11 +67,18 @@ img {
 
 header {
     display: flex;
-    justify-content: space-between;
+    padding: 0.5em 0;
+    background-color: var(--main-light-blue );
 }
 
 #searchInput {
-    width: 35%;
+    margin: 0 auto;
+    border:none;
+    border-radius: 5px;
+}
+
+.createIicketButton{
+    margin-right: 30%;
 }
 
 .centerContainer {
@@ -71,22 +88,22 @@ header {
 }
 
 .board {
-    width: 70vw;
+    width: 70%;
 }
 
-.sidebar {
-    width: 30vw;
-    margin: 2em;
+.sideBar {
+    width: calc(30% - 1em);
+    padding: 0.5em 0.5em;
+    background-color: var(--main-light-blue );
 }
 
 /* single ticket */
 .ticket {
-    margin: 1em;
+    margin: 1em 0.75em;
     background-color: var(--main-background-blue);
     display: flex;
     flex-direction: column;
-    padding-left: 1em;
-    padding-right: 1em;
+    padding: 0 0.25em;
     white-space: pre-wrap;
 }
 
@@ -152,14 +169,37 @@ header {
 }
 
 /* priorities */
-.low {
-    color: var(--main-yellow);
+.low { color: var(--main-yellow); }
+
+.medium { color: var(--main-orange); }
+
+.high { color: var(--main-red); }
+
+/* filters */
+.innerSidebar h5 { margin-top: 0.5em; }
+
+.noStyle { list-style: none; }
+
+.filterGroup { background-color: var(--main-background-blue); }
+
+/* buttons */
+.createIicketButton, #restoreHideTickets {
+    border-radius: 5px;
+    border-width: 0px;
+    box-shadow: 2px 2px 4px black;
+    background-color: #15599d;
+    color: white;
+    font-weight: bold;
+    z-index: 1;
 }
 
-.medium {
-    color: var(--main-orange);
+.createIicketButton {
+    width: 4.5em;
+    height: 2.7em;
 }
 
-.high {
-    color: var(--main-red);
+#restoreHideTickets {
+    width: 13em;
+    height: 2.7em;
+    margin: 0.5em;
 }
