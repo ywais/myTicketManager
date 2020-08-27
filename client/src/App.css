@@ -85,10 +85,11 @@ header {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    justify-content: space-between;
 }
 
 .board {
-    width: 70%;
+    width: 69%;
 }
 
 .sideBar {
@@ -105,6 +106,9 @@ header {
     flex-direction: column;
     padding: 0 0.25em;
     white-space: pre-wrap;
+    border-color: var(--main-light-blue);
+    border-style: solid;
+    border-width: thin;
 }
 
 .ticket .buttons {
