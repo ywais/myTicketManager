@@ -3,7 +3,7 @@
     --main-light-blue: #b3ecff;
     --main-red: #ff3300;
     --main-orange: #ff8c1a;
-    --main-yellow: #ffff00;
+    --main-yellow: #f9f906;
 }
 
 * {
@@ -149,4 +149,17 @@ header {
 
 .hiddenTicket {
     display: none;
+}
+
+/* priorities */
+.low {
+    color: var(--main-yellow);
+}
+
+.medium {
+    color: var(--main-orange);
+}
+
+.high {
+    color: var(--main-red);
 }

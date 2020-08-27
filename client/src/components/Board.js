@@ -11,6 +11,7 @@ function Board(props) {
       content={ticket.content}
       userEmail={ticket.userEmail}
       creationTime={ticket.creationTime}
+      priority={ticket.priority}
       labels={ticket.labels}
       done={ticket.done}
       onDoneClick={() => props.onDoneClick(ticket.id)}

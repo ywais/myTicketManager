@@ -8,6 +8,16 @@ function Ticket(props) {
     return '';
   };
 
+  const printPriority = (priority) => {
+    if (priority === 1) {
+      return <><span className='priority low'>●</span> Low</>;
+    } else if (priority === 2) {
+      return <><span className='priority medium'>●</span> Medium</>;
+    } else {
+      return <><span className='priority high'>●</span> High</>;
+    }
+  };
+
   const displayDate = (creationTime) => {
     const date = new Date(creationTime);
     const year = date.getFullYear();
@@ -36,9 +46,10 @@ function Ticket(props) {
         <h4 className="ticketTitle">{props.title}</h4>
         <p className="ticketContent">{props.content}</p>
         <div className="ticketInfo">
-          <div className="ticketUserInfo">
+          <div className="ticketLeftInfo">
             <span className="ticketUserEmail">{props.userEmail}</span>
             <span className="ticketCreationTime">{displayDate(props.creationTime)}</span>
+            <span className="ticketPriority">{printPriority(props.priority)}</span>
           </div>
           <div className="ticketLabels">{printLabels(props.labels)}</div>
         </div>
