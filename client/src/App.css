@@ -49,6 +49,36 @@ img {
     width: 100%;
 }  
 
+/* page layout */
+.pageContainer {
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+}
+
+#searchInput {
+    width: 35%;
+}
+
+.centerContainer {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.board {
+    width: 70vw;
+}
+
+.sidebar {
+    width: 30vw;
+    margin: 2em;
+}
+
 /* single ticket */
 .ticket {
     margin: 1em;
@@ -85,6 +115,7 @@ img {
 
 .ticket .ticketContent {
     padding-top: 0.5em;
+    overflow: auto;
 }
 
 .ticket .ticketInfo {

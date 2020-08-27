@@ -68,23 +68,39 @@ function App() {
 
   // app structure
   return (
-    <main>
-      <input id="searchInput" onChange={(event) => setFiltering(event.target.value)} />
-      <div className="hideAndRestore">
-        <span id="hideTicketsCounter">
+    <div className='pageContainer'>
+      <header className="topBar">
+        <h3>Tickets ({tickets.length})</h3>
+        <input id="searchInput" placeholder='Search Title...' onChange={(event) => setFiltering(event.target.value)} />
+        <button className="createIicketButton">Create</button>
+      </header>
+      <main>
+        <div className="hideAndRestore">
+          <span id="hideTicketsCounter">
           {hiddenIds.length > 0 ? hiddenIds.length : ''}
-        </span>
-        <span id="hideTicketsText">
+          </span>
+          <span id="hideTicketsText">
           {hiddenIds.length > 0 ? ` hidden ticket${hiddenIds.length > 1 ? 's ' : ' '}` : ''}
-        </span>
-        <button id="restoreHideTickets" onClick={handleRestoreClick}>Restore Hidden Tickets</button>
-      </div>
-      <Board
-        tickets={tickets}
-        onDoneClick={(id) => handleDoneClick(id)}
-        onHideClick={(id) => handleHideClick(id)}
-      />
-    </main>
+          </span>
+          <button id="restoreHideTickets" onClick={handleRestoreClick}>Restore Hidden Tickets</button>
+        </div>
+        <section className='centerContainer'>
+          <article className='board'>
+            <Board
+              tickets={tickets}
+              onDoneClick={(id) => handleDoneClick(id)}
+              onHideClick={(id) => handleHideClick(id)}
+            />
+          </article>
+          <aside className="sideBar">
+            <h3>Filters:</h3>
+            <div className='priorityFilter'></div>
+            <div className='labelFilter'></div>
+            <div className='added'></div>
+          </aside>
+        </section>
+      </main>
+    </div>
   );
 }
 
