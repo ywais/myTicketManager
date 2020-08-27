@@ -15,7 +15,8 @@ function App() {
     const getFilteredTickets = async () => {
       const { data } = await axios.get(`/api/tickets?searchText=${filtering}`);
       const spaces = new RegExp(/^(\s{1,})$/);
-      if ((filtering === '' || filtering.match(spaces).length) > 0 && hiddenIds.length > 0) {
+      const length = filtering === '' || filtering.match(spaces) === null ? 0 : filtering.match(spaces).length;
+      if ((filtering === '' || length > 0) && hiddenIds.length > 0) {
         data.forEach((ticket) => {
           hiddenIds.forEach((hiddenId) => {
             if (ticket.id === hiddenId) {
