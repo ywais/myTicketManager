@@ -27,7 +27,6 @@ app.post('/api/tickets/:ticketId/done', async (req, res) => {
   ticketsUnJSONed.forEach((ticket, i) => {
     if (ticket.id === req.params.ticketId) {
       ticketsUnJSONed[i].done = true;
-      ticketsUnJSONed[i].updated = true;
     }
   });
   const ticketsReJSONed = JSON.stringify(ticketsUnJSONed);
@@ -41,7 +40,6 @@ app.post('/api/tickets/:ticketId/undone', async (req, res) => {
   ticketsUnJSONed.forEach((ticket, i) => {
     if (ticket.id === req.params.ticketId) {
       ticketsUnJSONed[i].done = false;
-      ticketsUnJSONed[i].updated = true;
     }
   });
   const ticketsReJSONed = JSON.stringify(ticketsUnJSONed);

@@ -91,13 +91,13 @@ function App() {
       if (typeof boxId === 'number') {
         filteringCopy[0].forEach((priority, index) => {
           if (priority === boxId) {
-            filteringCopy[0].splice(index, index + 1);
+            filteringCopy[0].splice(index, 1);
           }
         });
       } else {
         filteringCopy[1].forEach((label, index) => {
           if (label === boxId) {
-            filteringCopy[1].splice(index, index + 1);
+            filteringCopy[1].splice(index, 1);
           }
         });
       }
