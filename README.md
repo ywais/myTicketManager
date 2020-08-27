@@ -1,10 +1,9 @@
 # Final 1/5 - Tickets Manager
-## Running tests
 
 ## Backend Requirements
 
-- [ ] The Express app should be located in the path `server/app.js` and export the `app` object (`module.exports = app;`).
-- [ ] The server should run on port `8080` serve the react app on `http://localhost:8080/` and expose those API endpoints:
+- [x] The Express app should be located in the path `server/app.js` and export the `app` object (`module.exports = app;`).
+- [ x ] The server should run on port `8080` serve the react app on `http://localhost:8080/` and expose those API endpoints:
 - [ ] [GET] api/tickets - returns an array of tickets from saved in `server/data.json`. If called with query param `searchText` the API will filter only tickets that have a title including a case-insensitive version of the `searchText` param
 - [ ] [POST] api/tickets/:ticketId/done - Sets `done` property to `true` for the given ticketId
 - [ ] [POST] api/tickets/:ticketId/undone - Sets `done` property to `false` for the given ticketId
