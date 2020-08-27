@@ -9,7 +9,7 @@ function App() {
   const [tickets, setTickets] = useState([]);
   const [hiddenIds, setHiddenIds] = useState([]);
   const [searchParam, setSearchParam] = useState('');
-  const [filtering, setFiltering] = useState([[], []]); //[priorities, labels]
+  const [filtering, setFiltering] = useState([[], []]); // [priorities, labels]
 
   // get all and filter tickets data
   useEffect(() => {
@@ -17,18 +17,16 @@ function App() {
       const { data } = await axios.get(`/api/tickets?searchText=${searchParam}`);
       const spaces = new RegExp(/^(\s{1,})$/);
       const length = searchParam === '' || searchParam.match(spaces) === null ? 0 : searchParam.match(spaces).length;
-      if(filtering[0].length > 0 || filtering[1].length > 0) {
-        data.forEach(ticket => {
-          if(filtering[0].includes(ticket.priority)) {
-            ticket.style = {display: "none"};
-          } else {
-            if(ticket.labels) {debugger;
-              ticket.labels.forEach(label => {
-                if(filtering[1].includes(label)) {
-                  ticket.style = {display: "none"};debugger;
-                }
-              });
-            }   
+      if (filtering[0].length > 0 || filtering[1].length > 0) {
+        data.forEach((ticket) => {
+          if (filtering[0].includes(ticket.priority)) {
+            ticket.style = { display: 'none' };
+          } else if (ticket.labels) {
+            ticket.labels.forEach((label) => {
+              if (filtering[1].includes(label)) {
+                ticket.style = { display: 'none' };
+              }
+            });
           }
         });
       }
@@ -43,7 +41,7 @@ function App() {
       }
       setTickets(data);
     };
-    getFilteredTickets();debugger;
+    getFilteredTickets();
   }, [searchParam]);
 
   // done button clicked
@@ -85,40 +83,31 @@ function App() {
     document.querySelector('#searchInput').value = '';
   };
 
-  //check for checked boxes
-  const onCheckboxClick = (boxId, isChecked) => {debugger;
-    let filteringCopy = filtering.slice();
-    if(isChecked) {
-      if(typeof boxId === 'number') {
+  // check for checked boxes
+  const onCheckboxClick = (boxId, isChecked) => {
+    const filteringCopy = filtering.slice();
+    if (isChecked) {
+      if (typeof boxId === 'number') {
         filteringCopy[0].forEach((priority, index) => {
-          if(priority === boxId) {
-              filteringCopy[0].splice(index, index + 1);debugger;
+          if (priority === boxId) {
+            filteringCopy[0].splice(index, index + 1);
           }
         });
       } else {
         filteringCopy[1].forEach((label, index) => {
-          if(label === boxId) {
-              filteringCopy[1].splice(index, index + 1);debugger;
+          if (label === boxId) {
+            filteringCopy[1].splice(index, index + 1);
           }
         });
       }
+    } else if (typeof boxId === 'number') {
+      filteringCopy[0] = filteringCopy[0].concat(boxId);
     } else {
-      if(typeof boxId === 'number') {
-        filteringCopy[0] = filteringCopy[0].concat(boxId);debugger;
-      } else {
-        filteringCopy[1] = filteringCopy[1].concat(boxId);
-      }
+      filteringCopy[1] = filteringCopy[1].concat(boxId);
     }
     setFiltering(filteringCopy);
-    setSearchParam(`${searchParam} `);debugger;
-
-    // const uncheckedCopy = unchecked.slice();
-    // uncheckedCopy[0].forEach((priority, index) => {
-    //   uncheckedCopy[0][index] = priority === 'low' ? 1 : priority === 'medium' ? 2 : 3;
-    // })
-    // setFiltering(uncheckedCopy);
-    // setSearchParam(`${searchParam} `);
-  }
+    setSearchParam(`${searchParam} `);
+  };
 
   // app structure
   return (
@@ -151,7 +140,7 @@ function App() {
             />
           </article>
           <aside className="sideBar">
-            <Filters onChange={(boxId, isChecked) => onCheckboxClick(boxId, isChecked)}/>
+            <Filters onChange={(boxId, isChecked) => onCheckboxClick(boxId, isChecked)} />
           </aside>
         </section>
       </main>
