@@ -170,7 +170,6 @@ function Filters(props) {
           </li>
         </ul>
       </div>
-      <div className="added" />
     </section>
   );
 }

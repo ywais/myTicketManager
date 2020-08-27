@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Board from './components/Board';
 import Filters from './components/Filters';
+import Ads from './components/Ads';
 import './App.css';
 
 function App() {
@@ -141,6 +142,7 @@ function App() {
           </article>
           <aside className="sideBar">
             <Filters onChange={(boxId, isChecked) => onCheckboxClick(boxId, isChecked)} />
+            <Ads />
           </aside>
         </section>
       </main>
