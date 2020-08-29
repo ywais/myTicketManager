@@ -119,7 +119,7 @@ function App() {
           {tickets.length}
           )
         </h3>
-        <input id="searchInput" placeholder="Search Title..." onChange={(event) => setSearchParam(event.target.value)} />
+        <input id="searchInput" placeholder=" Search Title..." onChange={(event) => setSearchParam(event.target.value)} />
         <button className="createIicketButton">Create</button>
       </header>
       <main>
