@@ -17,28 +17,30 @@ function App() {
     const getFilteredTickets = async () => {
       const { data } = await axios.get(`/api/tickets?searchText=${searchParam}`);
       const spaces = new RegExp(/^(\s{1,})$/);
-      const length = searchParam === '' || searchParam.match(spaces) === null ? 0 : searchParam.match(spaces).length;
-      if (filtering[0].length > 0 || filtering[1].length > 0) {
-        data.forEach((ticket) => {
-          if (filtering[0].includes(ticket.priority)) {
-            ticket.style = { display: 'none' };
-          } else if (ticket.labels) {
-            ticket.labels.forEach((label) => {
-              if (filtering[1].includes(label)) {
-                ticket.style = { display: 'none' };
-              }
-            });
-          }
-        });
-      }
-      if ((searchParam === '' || length > 0) && hiddenIds.length > 0) {
-        data.forEach((ticket) => {
-          hiddenIds.forEach((hiddenId) => {
-            if (ticket.id === hiddenId) {
-              ticket.className = 'hiddenTicket';
+      const isSearchEmptyOrSpaces = searchParam === '' || searchParam.match(spaces) !== null;
+      if (isSearchEmptyOrSpaces) {
+        if (filtering[0].length > 0 || filtering[1].length > 0) {
+          data.forEach((ticket) => {
+            if (filtering[0].includes(ticket.priority)) {
+              ticket.style = { display: 'none' };
+            } else if (ticket.labels) {
+              ticket.labels.forEach((label) => {
+                if (filtering[1].includes(label)) {
+                  ticket.style = { display: 'none' };
+                }
+              });
             }
           });
-        });
+        }
+        if (hiddenIds.length > 0) {
+          data.forEach((ticket) => {
+            hiddenIds.forEach((hiddenId) => {
+              if (ticket.id === hiddenId) {
+                ticket.className = 'hiddenTicket';
+              }
+            });
+          });
+        }
       }
       setTickets(data);
     };
