@@ -3,6 +3,7 @@ import axios from 'axios';
 import Board from './components/Board';
 import Filters from './components/Filters';
 import Ads from './components/Ads';
+import Form from './components/Form';
 import './App.css';
 
 function App() {
@@ -147,6 +148,7 @@ function App() {
             <Ads />
           </aside>
         </section>
+        <Form showForm=""/>
       </main>
     </div>
   );
