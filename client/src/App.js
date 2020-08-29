@@ -12,6 +12,7 @@ function App() {
   const [hiddenIds, setHiddenIds] = useState([]);
   const [searchParam, setSearchParam] = useState('');
   const [filtering, setFiltering] = useState([[], []]); // [priorities, labels]
+  const [showForm, setShowForm] = useState(["none"]);
 
   // get all and filter tickets data
   useEffect(() => {
@@ -113,6 +114,15 @@ function App() {
     setSearchParam(`${searchParam} `);
   };
 
+  // post new ticket
+  const onSubmitClick = async (newTicket) => {
+    await axios.post('/api/tickets/create', newTicket);
+    setShowForm("none");
+  }
+
+  // create button clicked
+  const onCreateClick = () => { setShowForm(""); }
+
   // app structure
   return (
     <div className="pageContainer">
@@ -123,7 +133,7 @@ function App() {
           )
         </h3>
         <input id="searchInput" placeholder=" Search Title..." onChange={(event) => setSearchParam(event.target.value)} />
-        <button className="createIicketButton">Create</button>
+        <button className="createIicketButton" onClick={onCreateClick}>Create</button>
       </header>
       <main>
         <section className="centerContainer">
@@ -148,7 +158,7 @@ function App() {
             <Ads />
           </aside>
         </section>
-        <Form showForm=""/>
+        <Form showForm={showForm} onClick={newTicket => onSubmitClick(newTicket)}/>
       </main>
     </div>
   );

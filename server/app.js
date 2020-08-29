@@ -44,7 +44,7 @@ app.post('/api/tickets/:ticketId/undone', async (req, res) => {
   await fs.writeFile(filePath, ticketsReJSONed);
 });
 
-app.post('/api/tickets/:ticketId/create', async (req, res) => {
+app.post('/api/tickets/create', async (req, res) => {
   const tickets = await fs.readFile(filePath);
   const ticketsUnJSONed = JSON.parse(tickets);
   ticketsUnJSONed.push(req.body);
