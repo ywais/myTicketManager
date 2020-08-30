@@ -30,6 +30,8 @@ Use a popular style guide - Airbnb
   2. mark / unmark tickets as done
   3. add priority to every ticket
   4. filter tickets by priority / label
+  5. ads block
+  6. 'create' form to add new tickets
 - [ ] Testing that feature - add a test to that new feature
 - [x] Add an explanation for this new feature in your PR 
 - [x] Visual creativity, use css to make this app look awesome 💅🏿
