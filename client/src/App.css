@@ -188,7 +188,7 @@ header {
 .innerSidebar .filterGroup { background-color: var(--main-background-blue); }
 
 /* buttons */
-.createIicketButton, #restoreHideTickets, #submit {
+.createIicketButton, #restoreHideTickets, #submit, #close {
     border-radius: 5px;
     border-width: 0px;
     box-shadow: 2px 2px 4px black;
@@ -237,4 +237,9 @@ header {
     position: absolute;
     right: 1em;
     margin-top: 0.4em;
+}
+
+.formButtons {
+    display: flex;
+    justify-content: space-between;
 }

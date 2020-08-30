@@ -50,7 +50,10 @@ function Form(props) {
         <option value="3">high</option>
       </select>
       <br />
-      <button type="button" id="submit" onClick={onSubmitClick}>Submit</button>
+      <div className="formButtons">
+        <button type="button" id="submit" onClick={onSubmitClick}>Submit</button>
+        <button type="button" id="close" onClick={props.onCloseClick}>close</button>
+      </div>
     </form>
   );
 }

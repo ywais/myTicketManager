@@ -123,6 +123,9 @@ function App() {
     setShowForm("none");
     setSearchParam(`${searchParam} `);
   }
+  
+  // close button clicked
+  const onCloseClick = () => { setShowForm("none"); }
 
   // app structure
   return (
@@ -159,7 +162,7 @@ function App() {
             <Ads />
           </aside>
         </section>
-        <Form showForm={showForm} onClick={newTicket => onSubmitClick(newTicket)}/>
+        <Form showForm={showForm} onClick={newTicket => onSubmitClick(newTicket)} onCloseClick={onCloseClick}/>
       </main>
     </div>
   );
