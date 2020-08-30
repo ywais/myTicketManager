@@ -1,6 +1,7 @@
 :root {
     --main-background-blue: #e6ffff;
     --main-light-blue: #b3ecff;
+    --main-dark-blue: #15599d;
     --main-red: #ff3300;
     --main-orange: #ff8c1a;
     --main-yellow: #f9f906;
@@ -187,24 +188,20 @@ header {
 .innerSidebar .filterGroup { background-color: var(--main-background-blue); }
 
 /* buttons */
-.createIicketButton, #restoreHideTickets {
+.createIicketButton, #restoreHideTickets, #submit {
     border-radius: 5px;
     border-width: 0px;
     box-shadow: 2px 2px 4px black;
-    background-color: #15599d;
+    width: 4.5em;
+    height: 2.7em;
+    background-color: var(--main-dark-blue);
     color: white;
     font-weight: bold;
     z-index: 1;
 }
 
-.createIicketButton {
-    width: 4.5em;
-    height: 2.7em;
-}
-
 #restoreHideTickets {
     width: 13em;
-    height: 2.7em;
     margin: 1em 0.75em 0 0.75em;
 }
 
@@ -217,17 +214,27 @@ header {
 .newTicket {
     position: fixed;
     bottom: calc(50% - 13em / 2);
-    right: calc(50% - 266px / 2);
+    right: calc(50% - 13.5em / 2);
     background-color: var(--main-light-blue);
     padding: 1em;
     font-size: larger;
+    border-style: solid;
+    border-width: medium;
+    border-color: var(--main-dark-blue);
 }
 
 .newTicket #labelsLable {
     position: relative;
     bottom: 2em;
+    margin-right: 0.35em;
 }
 
 .newTicket #labels {
     width: 14em;
+}
+
+.newTicket input {
+    position: absolute;
+    right: 1em;
+    margin-top: 0.4em;
 }
