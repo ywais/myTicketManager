@@ -12,7 +12,7 @@ function App() {
   const [hiddenIds, setHiddenIds] = useState([]);
   const [searchParam, setSearchParam] = useState('');
   const [filtering, setFiltering] = useState([[], []]); // [priorities, labels]
-  const [showForm, setShowForm] = useState(["none"]);
+  const [showForm, setShowForm] = useState(['none']);
 
   // get all and filter tickets data
   useEffect(() => {
@@ -113,19 +113,19 @@ function App() {
     setFiltering(filteringCopy);
     setSearchParam(`${searchParam} `);
   };
-  
+
   // create button clicked
-  const onCreateClick = () => { setShowForm(""); }
+  const onCreateClick = () => { setShowForm(''); };
 
   // post new ticket
   const onSubmitClick = async (newTicket) => {
     await axios.post('/api/tickets/create', newTicket);
-    setShowForm("none");
+    setShowForm('none');
     setSearchParam(`${searchParam} `);
-  }
-  
+  };
+
   // close button clicked
-  const onCloseClick = () => { setShowForm("none"); }
+  const onCloseClick = () => { setShowForm('none'); };
 
   // app structure
   return (
@@ -162,7 +162,11 @@ function App() {
             <Ads />
           </aside>
         </section>
-        <Form showForm={showForm} onClick={newTicket => onSubmitClick(newTicket)} onCloseClick={onCloseClick}/>
+        <Form
+          showForm={showForm}
+          onClick={(newTicket) => onSubmitClick(newTicket)}
+          onCloseClick={onCloseClick}
+        />
       </main>
     </div>
   );

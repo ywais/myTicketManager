@@ -1,20 +1,18 @@
 import React from 'react';
 
 function Form(props) {
-  const now = new Date();
-
   const onSubmitClick = () => {
-      props.onClick({
+    props.onClick({
       id: document.querySelector('#id').value,
       title: document.querySelector('#title').value,
       content: document.querySelector('#content').value,
       userEmail: document.querySelector('#userEmail').value,
       creationTime: Date.now(),
-      labels: Array.from(document.querySelectorAll('#labels option:checked')).map(label => label.value),
-      priority: document.querySelector('#priority option:checked').value
+      labels: Array.from(document.querySelectorAll('#labels option:checked')).map((label) => label.value),
+      priority: document.querySelector('#priority option:checked').value,
     });
-  }
-    
+  };
+
   return (
     <form className="newTicket" style={{ display: props.showForm }}>
       <h4>Add a new ticket</h4>
