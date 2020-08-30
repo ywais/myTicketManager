@@ -17,19 +17,20 @@ function Form(props) {
     
   return (
     <form className="newTicket" style={{ display: props.showForm }}>
-      <label htmlFor="id">ID:</label>
+      <h4>Add a new ticket</h4>
+      <label htmlFor="id">ID: </label>
       <input type="text" id="id" name="id" required />
       <br />
-      <label htmlFor="title">Title:</label>
+      <label htmlFor="title">Title: </label>
       <input type="text" id="title" name="title" required />
       <br />
-      <label htmlFor="content">Content:</label>
+      <label htmlFor="content">Content: </label>
       <input type="text" id="content" name="content" required />
       <br />
-      <label htmlFor="userEmail">Email:</label>
+      <label htmlFor="userEmail">Email: </label>
       <input type="text" id="userEmail" name="userEmail" required />
       <br />
-      <label htmlFor="labels">Labels:</label>
+      <label id="labelsLable" htmlFor="labels">Labels: </label>
       <select name="labels" id="labels" multiple>
         <option value="Api">Api</option>
         <option value="Collapse">Collapse</option>
@@ -42,7 +43,7 @@ function Form(props) {
         <option value="View Count">View Count</option>
       </select>
       <br />
-      <label htmlFor="priority">Priority:</label>
+      <label htmlFor="priority">Priority: </label>
       <select name="priority" id="priority" required>
         <option value="1">low</option>
         <option value="2">medium</option>

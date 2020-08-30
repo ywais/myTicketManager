@@ -113,15 +113,16 @@ function App() {
     setFiltering(filteringCopy);
     setSearchParam(`${searchParam} `);
   };
+  
+  // create button clicked
+  const onCreateClick = () => { setShowForm(""); }
 
   // post new ticket
   const onSubmitClick = async (newTicket) => {
     await axios.post('/api/tickets/create', newTicket);
     setShowForm("none");
+    setSearchParam(`${searchParam} `);
   }
-
-  // create button clicked
-  const onCreateClick = () => { setShowForm(""); }
 
   // app structure
   return (

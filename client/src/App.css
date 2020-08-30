@@ -173,18 +173,18 @@ header {
 }
 
 /* priorities */
-.low { color: var(--main-yellow); }
+.ticket .low { color: var(--main-yellow); }
 
-.medium { color: var(--main-orange); }
+.ticket .medium { color: var(--main-orange); }
 
-.high { color: var(--main-red); }
+.ticket .high { color: var(--main-red); }
 
 /* filters */
 .innerSidebar h5 { margin-top: 0.5em; }
 
-.noStyle { list-style: none; }
+.innerSidebar .noStyle { list-style: none; }
 
-.filterGroup { background-color: var(--main-background-blue); }
+.innerSidebar .filterGroup { background-color: var(--main-background-blue); }
 
 /* buttons */
 .createIicketButton, #restoreHideTickets {
@@ -211,4 +211,23 @@ header {
 /* ads */
 .noTAnaD {
     margin-top: 0.5em;
+}
+
+/* form */
+.newTicket {
+    position: fixed;
+    bottom: calc(50% - 13em / 2);
+    right: calc(50% - 266px / 2);
+    background-color: var(--main-light-blue);
+    padding: 1em;
+    font-size: larger;
+}
+
+.newTicket #labelsLable {
+    position: relative;
+    bottom: 2em;
+}
+
+.newTicket #labels {
+    width: 14em;
 }
