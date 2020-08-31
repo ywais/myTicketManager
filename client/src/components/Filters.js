@@ -16,7 +16,6 @@ function Filters(props) {
                 onChange={(event) => props.onChange(1, event.target.checked)}
                 defaultChecked
               />
-              {' '}
               Low
             </label>
           </li>
@@ -29,7 +28,6 @@ function Filters(props) {
                 onChange={(event) => props.onChange(2, event.target.checked)}
                 defaultChecked
               />
-              {' '}
               Medium
             </label>
           </li>
@@ -42,7 +40,6 @@ function Filters(props) {
                 onChange={(event) => props.onChange(3, event.target.checked)}
                 defaultChecked
               />
-              {' '}
               High
             </label>
           </li>
@@ -60,7 +57,6 @@ function Filters(props) {
                 onChange={(event) => props.onChange('Api', event.target.checked)}
                 defaultChecked
               />
-              {' '}
               Api
             </label>
           </li>
@@ -73,7 +69,6 @@ function Filters(props) {
                 onChange={(event) => props.onChange('Collapse', event.target.checked)}
                 defaultChecked
               />
-              {' '}
               Collapse
             </label>
           </li>
@@ -86,7 +81,6 @@ function Filters(props) {
                 onChange={(event) => props.onChange('Corvid', event.target.checked)}
                 defaultChecked
               />
-              {' '}
               Corvid
             </label>
           </li>
@@ -99,7 +93,6 @@ function Filters(props) {
                 onChange={(event) => props.onChange('Expand', event.target.checked)}
                 defaultChecked
               />
-              {' '}
               Expand
             </label>
           </li>
@@ -112,7 +105,6 @@ function Filters(props) {
                 onChange={(event) => props.onChange('Guidelines', event.target.checked)}
                 defaultChecked
               />
-              {' '}
               Guidelines
             </label>
           </li>
@@ -125,7 +117,6 @@ function Filters(props) {
                 onChange={(event) => props.onChange('Login', event.target.checked)}
                 defaultChecked
               />
-              {' '}
               Login
             </label>
           </li>
@@ -138,7 +129,6 @@ function Filters(props) {
                 onChange={(event) => props.onChange('Problem', event.target.checked)}
                 defaultChecked
               />
-              {' '}
               Problem
             </label>
           </li>
@@ -151,7 +141,6 @@ function Filters(props) {
                 onChange={(event) => props.onChange('Tutorial', event.target.checked)}
                 defaultChecked
               />
-              {' '}
               Tutorial
             </label>
           </li>
@@ -164,7 +153,6 @@ function Filters(props) {
                 onChange={(event) => props.onChange('ViewCount', event.target.checked)}
                 defaultChecked
               />
-              {' '}
               View Count
             </label>
           </li>
