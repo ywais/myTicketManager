@@ -1,5 +1,6 @@
 const express = require('express');
 const fs = require('fs').promises;
+
 const filePath = './data.json';
 
 const app = express();
@@ -11,7 +12,7 @@ app.get('/api/tickets', async (req, res) => {
   const tickets = await fs.readFile(filePath);
   const ticketsUnJSONed = JSON.parse(tickets);
   if (req.query.searchText) {
-    const filteredTickets = ticketsUnJSONed.filter((ticket) => (ticket.title.toLowerCase().includes(req.query.searchText.toLowerCase()) ? ticket : ''));
+    const filteredTickets = ticketsUnJSONed.filter((ticket) => (ticket.title.toLowerCase().includes(req.query.searchText.toLowerCase())));
     res.send(filteredTickets);
   } else {
     res.send(ticketsUnJSONed);
