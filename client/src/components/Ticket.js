@@ -13,7 +13,6 @@ function Ticket(props) {
       return (
         <>
           <span className="priority low">●</span>
-          {' '}
           Low
         </>
       );
@@ -21,7 +20,6 @@ function Ticket(props) {
       return (
         <>
           <span className="priority medium">●</span>
-          {' '}
           Medium
         </>
       );
@@ -29,7 +27,6 @@ function Ticket(props) {
     return (
       <>
         <span className="priority high">●</span>
-        {' '}
         High
       </>
     );
