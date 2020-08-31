@@ -73,7 +73,7 @@ function App() {
       ticketsCopy.forEach((ticket) => {
         if (ticket.id === id) {
           ticket.className = 'hiddenTicket';
-          setHiddenIds(hiddenIds.concat(id));
+          setHiddenIds(hiddenIds => hiddenIds.concat(id));
         }
       });
     }
