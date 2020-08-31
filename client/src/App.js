@@ -82,7 +82,6 @@ function App() {
   // restore button clicked
   const handleRestoreClick = () => {
     tickets.forEach((ticket) => { ticket.className = 'ticket'; });
-    //   setTickets([]);
     setHiddenIds([]);
     setSearchParam('');
     document.querySelector('#searchInput').value = '';
@@ -156,7 +155,7 @@ function App() {
             />
           </article>
           <aside className="sideBar">
-            <Filters onChange={(boxId, isChecked) => onCheckboxClick(boxId, isChecked)} />
+            <Filters onChange={onCheckboxClick} />
             <Ads />
           </aside>
         </section>
