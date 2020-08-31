@@ -47,7 +47,7 @@ function App() {
       setTickets(data);
     };
     getFilteredTickets();
-  }, [searchParam]);
+  }, [searchParam, filtering, showForm]);
 
   // done button clicked
   const handleDoneClick = (id) => {
@@ -111,7 +111,6 @@ function App() {
       filteringCopy[1] = filteringCopy[1].concat(boxId);
     }
     setFiltering(filteringCopy);
-    setSearchParam(`${searchParam} `);
   };
 
   // create button clicked
@@ -121,7 +120,6 @@ function App() {
   const onSubmitClick = async (newTicket) => {
     await axios.post('/api/tickets/create', newTicket);
     setShowForm('none');
-    setSearchParam(`${searchParam} `);
   };
 
   // close button clicked
