@@ -9,7 +9,7 @@ function Form(props) {
       userEmail: document.querySelector('#userEmail').value,
       creationTime: Date.now(),
       labels: Array.from(document.querySelectorAll('#labels option:checked')).map((label) => label.value),
-      priority: document.querySelector('#priority option:checked').value,
+      priority: Number(document.querySelector('#priority option:checked').value),
     });
   };
 
