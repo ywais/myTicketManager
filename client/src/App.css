@@ -1,0 +1,249 @@
+:root {
+  --main-background-blue: #e6ffff;
+  --main-light-blue: #b3ecff;
+  --main-dark-blue: #15599d;
+  --main-red: #ff3300;
+  --main-orange: #ff8c1a;
+  --main-yellow: #f9f906;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: Montserrat;
+}
+
+html {
+  font-size: 62.5%;
+  scroll-behavior: smooth;
+}
+
+/* media queries for responsiveness */
+@media (min-width: 75em) {
+  #searchInput { width: 40%; }
+}
+
+@media (max-width: 75em) {
+  html { font-size: 60%; } 
+  #searchInput { width: 35%; }
+}
+
+@media (max-width: 61.25em) {
+  html { font-size: 58%; } 
+  #searchInput { width: 25%; }
+}
+
+@media (max-width: 30.75em) {
+  html { font-size: 55%; } 
+  #searchInput { width: 15%; }
+}
+
+/* base styling */
+body {
+  font-size: 1.8rem;
+  font-weight: 400;
+  line-height: 1.4;
+}
+
+h1, h2, h3, h4 { font-weight: 700; }
+
+h1 { font-size: 4rem; }
+
+h2 { font-size: 3.6rem; }
+
+h3 { font-size: 2.7rem; }
+
+h4 { font-size: 2.2rem; }
+
+img {
+    display: block;
+    width: 100%;
+}  
+
+/* page layout */
+.pageContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+header {
+  display: flex;
+  padding: 0.5em;
+  background-color: var(--main-light-blue );
+}
+
+#searchInput {
+  margin: 0 auto;
+  border:none;
+  border-radius: 5px;
+}
+
+.createIicketButton{
+  margin-right: 30%;
+}
+
+.centerContainer {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.board {
+  width: 70%;
+}
+
+.sideBar {
+  width: calc(30% - 1em);
+  padding: 0.5em 0.5em;
+  background-color: var(--main-light-blue );
+}
+
+/* single ticket */
+.ticket {
+  margin: 1em 0.75em;
+  background-color: var(--main-background-blue);
+  display: flex;
+  flex-direction: column;
+  padding: 0 0.25em;
+  white-space: pre-wrap;
+  border-color: var(--main-light-blue);
+  border-style: solid;
+  border-width: thin;
+}
+
+.ticket .buttons {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.ticket button {
+  visibility: hidden;
+  border: none;
+  text-decoration: none;
+  background-color: var(--main-background-blue);
+  padding: 0.5em 0 0 1em;
+  font-weight: bold;
+}
+
+.ticket:hover button {
+  visibility: visible;
+  outline:none;
+}
+
+.ticket:hover button:hover {
+  text-decoration: underline;
+}
+
+.ticket .ticketContent {
+  padding-top: 0.5em;
+  overflow: auto;
+}
+
+.ticket .ticketInfo {
+  padding-top: 0.5em;
+  display: flex;
+  justify-content: space-between;
+}
+
+.ticket span {
+  padding: 0 0.25em;
+  font-size: small;
+}
+
+.ticket .label {
+  background-color: var(--main-light-blue);
+  padding: 0.25em 0.5em;
+  margin-left: 0.25em;
+  border-radius: 10%;
+}
+
+.ticket .ticketUserInfo {
+  font-style: italic;
+}
+
+.ticket .ticketUserEmail {
+  padding-right: 0.5em;
+  border-right-color: black;
+  border-right-style: solid;
+  border-right-width: thin;
+}
+
+.hiddenTicket {
+  display: none;
+}
+
+/* priorities */
+.ticket .low { color: var(--main-yellow); }
+
+.ticket .medium { color: var(--main-orange); }
+
+.ticket .high { color: var(--main-red); }
+
+/* filters */
+.innerSidebar h5 { margin-top: 0.5em; }
+
+.innerSidebar .noStyle { list-style: none; }
+
+.innerSidebar .filterGroup { background-color: var(--main-background-blue); }
+
+[type='checkbox'] {
+  margin: 0 0.5em;
+}
+
+/* buttons */
+.createIicketButton, #restoreHideTickets, #submit, #close {
+  border-radius: 5px;
+  border-width: 0px;
+  box-shadow: 2px 2px 4px black;
+  width: 4.5em;
+  height: 2.7em;
+  background-color: var(--main-dark-blue);
+  color: white;
+  font-weight: bold;
+  z-index: 1;
+}
+
+#restoreHideTickets {
+  width: 13em;
+  margin: 1em 0.75em 0 0.75em;
+}
+
+/* ads */
+.noTAnaD {
+  margin-top: 0.5em;
+}
+
+/* form */
+.newTicket {
+  position: fixed;
+  bottom: calc(50% - 13em / 2);
+  right: calc(50% - 13.5em / 2);
+  background-color: var(--main-light-blue);
+  padding: 1em;
+  font-size: larger;
+  border-style: solid;
+  border-width: medium;
+  border-color: var(--main-dark-blue);
+}
+
+.newTicket #labelsLable {
+  position: relative;
+  bottom: 2em;
+  margin-right: 0.35em;
+}
+
+.newTicket #labels {
+  width: 14em;
+}
+
+.newTicket input {
+  position: absolute;
+  right: 1em;
+  margin-top: 0.4em;
+}
+
+.formButtons {
+  display: flex;
+  justify-content: space-between;
+}

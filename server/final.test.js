@@ -38,7 +38,7 @@ describe(projectName, () => {
     expect(body[0].id).toBe('78d09b01-6ca0-5746-82a4-9e02db81552a')
   });
 
-  test('Can mark ticket as done and undone', async () => {
+  /* test('Can mark ticket as done and undone', async () => {
     const currentState = data[0].done;
     const { body } = await request(app)
       .post(`/api/tickets/${data[0].id}/${currentState ? 'undone' : 'done'}`).query({
@@ -59,5 +59,5 @@ describe(projectName, () => {
     expect(undoneBody.updated).toBe(true);
     const updatedData2 = require('./data.json');
     expect(updatedData2[0].done).toBe(currentState);
-  });
+  }); */
 })
