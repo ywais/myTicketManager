@@ -81,7 +81,8 @@ function App() {
 
   // restore button clicked
   const handleRestoreClick = () => {
-    tickets.forEach((ticket) => { ticket.className = 'ticket'; });
+    const updatedTickets = tickets.map((ticket) => ({ ...ticket, className: 'ticket' }));
+    setTickets(updatedTickets);
     setHiddenIds([]);
     setSearchParam('');
     document.querySelector('#searchInput').value = '';
